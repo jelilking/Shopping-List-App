@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/jelilking/shopping-list-app/static/css/main.ddece09c.css",
+    "main.js": "/jelilking/shopping-list-app/static/js/main.43fb732f.js",
+    "index.html": "/jelilking/shopping-list-app/index.html",
+    "main.ddece09c.css.map": "/jelilking/shopping-list-app/static/css/main.ddece09c.css.map",
+    "main.43fb732f.js.map": "/jelilking/shopping-list-app/static/js/main.43fb732f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ddece09c.css",
+    "static/js/main.43fb732f.js"
+  ]
+}

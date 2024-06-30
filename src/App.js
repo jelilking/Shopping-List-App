@@ -35,7 +35,7 @@ function ShoppingList() {
           <button className="add-btn">Add</button>
         </form>
       </div>
-      <ul className="list-item">
+      <ul className="list-items">
         {list.map((item, ind) => {
           return (
             <Item key={ind} ind={ind} item={item} handleDelete={handleDelete} />

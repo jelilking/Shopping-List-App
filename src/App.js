@@ -8,3 +8,40 @@ export default function App() {
     </div>
   );
 }
+
+function ShoppingList() {
+  // const [input, setInput] = useState("");
+  // const [list, setList] = useState([]);
+
+  // function addList(e) {
+  //   e.preventDefault();
+  //   setList([...list, input]);
+  // }
+
+  // function handleDelete(ind) {
+  //   const filteredList = list.filter((item, index) => index !== ind);
+  //   setList(filteredList);
+  // }
+
+  // function handleInputChange(e) {
+  //   setInput(e.target.value);
+  // }
+
+  return (
+    <div className="wrapper">
+      <div className="inputBx">
+        <form onSubmit={addList}>
+          <input type="text" value={input} onChange={handleInputChange} />
+          <button className="add-btn">Add</button>
+        </form>
+      </div>
+      <ul className="list-item">
+        {list.map((item, ind) => {
+          return (
+            <Item key={ind} ind={ind} item={item} handleDelete={handleDelete} />
+          );
+        })}
+      </ul>
+    </div>
+  );
+}

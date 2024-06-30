@@ -1,70 +1,130 @@
-# Getting Started with Create React App
+# Shopping List App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple React application that allows users to create and manage a shopping list. Users can add items to the list, view the list of items, and delete items from the list.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Add items to the shopping list.
+- View the list of added items.
+- Delete items from the shopping list.
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone the repository:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   ```bash
+   git clone https://github.com/yourusername/shopping-list-app.git
+   ```
 
-### `npm test`
+2. Navigate to the project directory:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   cd shopping-list-app
+   ```
 
-### `npm run build`
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Start the development server:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+2. Open your browser and navigate to `http://localhost:3000` to see the application in action.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Components
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### App Component
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The main component that renders the `ShoppingList` component.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```jsx
+import { useState } from "react";
 
-## Learn More
+export default function App() {
+  return (
+    <div className="App">
+      <h1>Shopping List</h1>
+      <ShoppingList />
+    </div>
+  );
+}
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### ShoppingList Component
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This component handles the state and logic for adding and deleting items from the shopping list.
 
-### Code Splitting
+```jsx
+import { useState } from "react";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+function ShoppingList() {
+  const [input, setInput] = useState("");
+  const [list, setList] = useState([]);
 
-### Analyzing the Bundle Size
+  function addList(e) {
+    e.preventDefault();
+    setList([...list, input]);
+    setInput("");
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  function handleDelete(ind) {
+    const filteredList = list.filter((item, index) => index !== ind);
+    setList(filteredList);
+  }
 
-### Making a Progressive Web App
+  function handleInputChange(e) {
+    setInput(e.target.value);
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  return (
+    <div className="wrapper">
+      <div className="inputBx">
+        <form onSubmit={addList}>
+          <input type="text" value={input} onChange={handleInputChange} />
+          <button className="add-btn">Add</button>
+        </form>
+      </div>
+      <ul className="list-items">
+        {list.map((item, ind) => {
+          return (
+            <Item key={ind} ind={ind} item={item} handleDelete={handleDelete} />
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+```
 
-### Advanced Configuration
+### Item Component
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This component renders an individual item in the shopping list along with a delete button.
 
-### Deployment
+```jsx
+const Item = ({ ind, item, handleDelete }) => {
+  return (
+    <div>
+      <li className="list-item"> {item} </li>
+      <button
+        type="button"
+        onClick={() => {
+          handleDelete(ind);
+        }}
+        className="delete-btn"
+      >
+        X
+      </button>
+    </div>
+  );
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Contributing
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.

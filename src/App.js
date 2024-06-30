@@ -16,6 +16,7 @@ function ShoppingList() {
   function addList(e) {
     e.preventDefault();
     setList([...list, input]);
+    setInput("");
   }
 
   function handleDelete(ind) {

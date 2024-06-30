@@ -45,3 +45,20 @@ function ShoppingList() {
     </div>
   );
 }
+
+const Item = ({ ind, item, handleDelete }) => {
+  return (
+    <div>
+      <li className="list-item"> {item} </li>
+      <button
+        type="button"
+        onClick={() => {
+          handleDelete(ind);
+        }}
+        className="delete-btn"
+      >
+        X
+      </button>
+    </div>
+  );
+};

@@ -10,22 +10,22 @@ export default function App() {
 }
 
 function ShoppingList() {
-  // const [input, setInput] = useState("");
-  // const [list, setList] = useState([]);
+  const [input, setInput] = useState("");
+  const [list, setList] = useState([]);
 
-  // function addList(e) {
-  //   e.preventDefault();
-  //   setList([...list, input]);
-  // }
+  function addList(e) {
+    e.preventDefault();
+    setList([...list, input]);
+  }
 
-  // function handleDelete(ind) {
-  //   const filteredList = list.filter((item, index) => index !== ind);
-  //   setList(filteredList);
-  // }
+  function handleDelete(ind) {
+    const filteredList = list.filter((item, index) => index !== ind);
+    setList(filteredList);
+  }
 
-  // function handleInputChange(e) {
-  //   setInput(e.target.value);
-  // }
+  function handleInputChange(e) {
+    setInput(e.target.value);
+  }
 
   return (
     <div className="wrapper">
